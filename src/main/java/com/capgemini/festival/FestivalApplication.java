@@ -1,4 +1,4 @@
-package com.application.festival;
+package com.capgemini.festival;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

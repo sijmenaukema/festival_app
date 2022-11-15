@@ -1,4 +1,7 @@
-package com.application.festival.repository;
+package com.capgemini.festival.repository;
 
-public class DiscJockeyRepository {
+import com.capgemini.festival.model.DiscJockey;
+import org.springframework.data.repository.CrudRepository;
+
+public interface DiscJockeyRepository extends CrudRepository<DiscJockey, Long> {
 }

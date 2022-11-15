@@ -1,4 +1,4 @@
-package com.application.festival;
+package com.capgemini.festival;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
