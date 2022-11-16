@@ -4,4 +4,14 @@ create classes for DJ V
 create classes for set V
 create Restcontroller(s)
 CRUD into JPA H2
+many many
 
+field list van MusicSets
+    SQL custom query
+    => postgressDB
+
+INSERT INTO discjockeys (id, name, genre) VALUES (1 , 'Piet', 'Koperblazer');
+INSERT INTO discjockeys (id, name, genre) VALUES (2 , 'Henk', 'Snaar');
+INSERT INTO discjockeys (id, name, genre) VALUES (3 , 'Klaas', 'Percussie');
+INSERT INTO discjockeys (id, name, genre) VALUES (4 , 'Jaap', 'Triangel');
+INSERT INTO discjockeys (id, name, genre) VALUES (5 , 'Wouter', 'Zijn snikkel');

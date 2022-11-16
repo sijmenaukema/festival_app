@@ -1,4 +1,4 @@
-package com.capgemini.festival.model;
+package nl.capgemini.festival.model;
 
 import javax.persistence.*;
 
@@ -10,9 +10,11 @@ public class MusicSet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String title;
-
+    @Column
     private String artist;
+    @Column
     private String genre;
 
     public MusicSet(){}

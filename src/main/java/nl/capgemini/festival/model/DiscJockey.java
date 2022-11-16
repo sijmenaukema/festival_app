@@ -1,4 +1,4 @@
-package com.capgemini.festival.model;
+package nl.capgemini.festival.model;
 
 import javax.persistence.*;
 
@@ -10,8 +10,10 @@ public class DiscJockey {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
 
+    @Column
     private String genre;
 
     public DiscJockey(){}
@@ -21,6 +23,17 @@ public class DiscJockey {
         this.genre = genre;
     }
 
+    public Long getId() {return id; }
+
     public String getName() { return name; }
 
+    public String getGenre() {return genre; }
+
+    public void setName() {
+        this.name = name;
+    }
+
+    public void setGenre() {
+        this.genre = genre;
+    }
 }
