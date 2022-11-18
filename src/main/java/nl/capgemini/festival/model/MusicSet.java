@@ -13,17 +13,21 @@ public class MusicSet {
     @Column
     private String title;
     @Column
-    private String artist;
+    private String discJockey;
     @Column
     private String genre;
 
     public MusicSet(){}
 
-    public MusicSet(String title, String artist, String genre){
+    public MusicSet(String title, String discJockey, String genre){
         this.title = title;
-        this.artist = artist;
+        this.discJockey = discJockey;
         this.genre = genre;
     }
 
     public String getTitle() { return title; }
+    public String getDiscJockey() {return discJockey; }
+    public String getGenre() {return genre; }
+    public void setTitle(String title) {this.title = title;}
+    public void setDiscJockey(String discJockey) {this.title = discJockey;}
 }

@@ -33,5 +33,4 @@ public class FestivalApplication {
 			musicSetRepository.save(new MusicSet("Klaagzang", "Piet", "Mondharmonika"));
 		};
 	}
-
 }

@@ -10,8 +10,12 @@ field list van MusicSets
     SQL custom query
     => postgressDB
 
+project hosten via een localhost container
+
 INSERT INTO discjockeys (id, name, genre) VALUES (1 , 'Piet', 'Koperblazer');
 INSERT INTO discjockeys (id, name, genre) VALUES (2 , 'Henk', 'Snaar');
 INSERT INTO discjockeys (id, name, genre) VALUES (3 , 'Klaas', 'Percussie');
 INSERT INTO discjockeys (id, name, genre) VALUES (4 , 'Jaap', 'Triangel');
 INSERT INTO discjockeys (id, name, genre) VALUES (5 , 'Wouter', 'Zijn snikkel');
+
+controller => antwoordmodel;

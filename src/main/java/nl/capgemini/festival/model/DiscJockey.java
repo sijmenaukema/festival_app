@@ -24,16 +24,12 @@ public class DiscJockey {
     }
 
     public Long getId() {return id; }
-
     public String getName() { return name; }
-
     public String getGenre() {return genre; }
-
-    public void setName() {
+    public void setName(String name) {
         this.name = name;
     }
-
-    public void setGenre() {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 }
