@@ -3,31 +3,34 @@ package nl.capgemini.festival.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "musicsets")
+@Table(name = "music_set")
 public class MusicSet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column
     private String title;
-    @Column
-    private String discJockey;
+
     @Column
     private String genre;
 
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="disc_jockey_id")
+    DiscJockey discJockey;
+
     public MusicSet(){}
 
-    public MusicSet(String title, String discJockey, String genre){
+    public MusicSet(String title, DiscJockey discJockey, String genre){
         this.title = title;
         this.discJockey = discJockey;
         this.genre = genre;
     }
 
+    public Long getId() { return id; }
     public String getTitle() { return title; }
-    public String getDiscJockey() {return discJockey; }
+    public DiscJockey getDiscJockey() {return discJockey; }
     public String getGenre() {return genre; }
     public void setTitle(String title) {this.title = title;}
-    public void setDiscJockey(String discJockey) {this.title = discJockey;}
 }

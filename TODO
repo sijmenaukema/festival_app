@@ -2,9 +2,9 @@ create spring initializr V
 create repo bitbucket V
 create classes for DJ V
 create classes for set V
-create Restcontroller(s)
-CRUD into JPA H2
-many many
+create Restcontroller(s) V
+CRUD into JPA H2 V
+many/one many V
 
 field list van MusicSets
     SQL custom query
@@ -16,6 +16,6 @@ INSERT INTO discjockeys (id, name, genre) VALUES (1 , 'Piet', 'Koperblazer');
 INSERT INTO discjockeys (id, name, genre) VALUES (2 , 'Henk', 'Snaar');
 INSERT INTO discjockeys (id, name, genre) VALUES (3 , 'Klaas', 'Percussie');
 INSERT INTO discjockeys (id, name, genre) VALUES (4 , 'Jaap', 'Triangel');
-INSERT INTO discjockeys (id, name, genre) VALUES (5 , 'Wouter', 'Zijn snikkel');
+
 
 controller => antwoordmodel;

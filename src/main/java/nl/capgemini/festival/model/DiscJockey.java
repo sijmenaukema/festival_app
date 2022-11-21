@@ -1,20 +1,24 @@
 package nl.capgemini.festival.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "discjockeys")
+@Table(name = "disc_jockey")
 public class DiscJockey {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column
     private String name;
 
     @Column
     private String genre;
+
+    @OneToMany
+    private Set<MusicSet> musicSet;
 
     public DiscJockey(){}
 
