@@ -5,31 +5,19 @@ create classes for set V
 create Restcontroller(s) V
 CRUD into JPA H2 V
 many/one many V
+controller => antwoordmodel; V
 
-Controller validation and error handling
+field list van MusicSets V
+    SQL custom query V
+    => postgressDB V
 
-update -> id(not found) invalid ID exception;
+Controller validation and error handling V
+
+update -> id(not found) invalid ID exception; V
 
 Part: test maken;
     regressie test vs unit test;
 
-review functionaliteit;
-
-front end;
-
-toString();
-
-field list van MusicSets
-    SQL custom query
-    => postgressDB
-
-
 project hosten via een localhost container
 
-INSERT INTO discjockeys (id, name, genre) VALUES (1 , 'Piet', 'Koperblazer');
-INSERT INTO discjockeys (id, name, genre) VALUES (2 , 'Henk', 'Snaar');
-INSERT INTO discjockeys (id, name, genre) VALUES (3 , 'Klaas', 'Percussie');
-INSERT INTO discjockeys (id, name, genre) VALUES (4 , 'Jaap', 'Triangel');
-
-
-controller => antwoordmodel;
+front end;
