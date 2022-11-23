@@ -9,5 +9,4 @@ class FestivalApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

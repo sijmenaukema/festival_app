@@ -1,6 +1,8 @@
 package nl.capgemini.festival.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -12,6 +14,8 @@ public class DiscJockey {
     private long id;
 
     @Column
+    @NotNull(message = "Name is mandatory")
+    @NotEmpty(message = "Name is mandatory")
     private String name;
 
     @Column
@@ -19,6 +23,9 @@ public class DiscJockey {
 
     @OneToMany
     private Set<MusicSet> musicSet;
+
+    @Column
+    private int review;
 
     public DiscJockey(){}
 

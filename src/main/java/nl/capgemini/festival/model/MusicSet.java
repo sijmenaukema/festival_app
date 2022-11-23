@@ -1,6 +1,7 @@
 package nl.capgemini.festival.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "music_set")
@@ -11,6 +12,7 @@ public class MusicSet {
     private long id;
 
     @Column
+    @NotNull(message = "title is mandatory")
     private String title;
 
     @Column

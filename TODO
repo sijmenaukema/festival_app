@@ -6,9 +6,23 @@ create Restcontroller(s) V
 CRUD into JPA H2 V
 many/one many V
 
+Controller validation and error handling
+
+update -> id(not found) invalid ID exception;
+
+Part: test maken;
+    regressie test vs unit test;
+
+review functionaliteit;
+
+front end;
+
+toString();
+
 field list van MusicSets
     SQL custom query
     => postgressDB
+
 
 project hosten via een localhost container
 

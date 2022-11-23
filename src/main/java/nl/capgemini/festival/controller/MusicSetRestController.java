@@ -1,50 +1,46 @@
 package nl.capgemini.festival.controller;
 
-import nl.capgemini.festival.model.DiscJockey;
 import nl.capgemini.festival.model.MusicSet;
 import nl.capgemini.festival.service.MusicSetService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/musicsets")
 public class MusicSetRestController {
 
     @Autowired
     MusicSetService musicSetService;
 
-    @GetMapping("/musicsets")
-    private ResponseEntity getAllMusicSets() {
+    @GetMapping("/")
+    private ResponseEntity<List<MusicSet>> getAllMusicSets() {
         List<MusicSet> musicSets  = musicSetService.getAllMusicSets();
-        return new ResponseEntity(musicSets, HttpStatus.OK);
+        return ResponseEntity.ok(musicSets);
     }
 
-    @GetMapping("/musicsets/id")
-    private ResponseEntity getMusicSets(@RequestBody long id) {
+    @GetMapping("/id")
+    private ResponseEntity<MusicSet> getMusicSets(@RequestBody long id) {
         MusicSet musicSet = musicSetService.getMusicSet(id);
         if (musicSet == null) {
-            return new ResponseEntity(
-                    null, HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }else{
-            return new ResponseEntity(
-                    musicSet, HttpStatus.OK);
+            return ResponseEntity.ok().body(musicSet);
         }
     }
 
-    @PostMapping("/musicsets")
-    private ResponseEntity postMusicSet(@RequestBody MusicSet newMusicSet) {
+    @PostMapping("/")
+    private ResponseEntity<String> postMusicSet(@RequestBody MusicSet newMusicSet) {
         musicSetService.postNewMusicSet(newMusicSet);
-        return new ResponseEntity(
-                null, HttpStatus.OK);
+        return ResponseEntity.ok("music set has been added");
     }
 
-    @DeleteMapping("/musicsets/id")
-    private ResponseEntity deleteMusicSet(@RequestBody long id) {
+    @DeleteMapping("/id")
+    private ResponseEntity<String> deleteMusicSet(@RequestBody long id) {
         musicSetService.removeMusicSet(id);
-        return new ResponseEntity(
-                null, HttpStatus.OK);
+        return ResponseEntity.ok("Music set has been removed");
+
     }
 }

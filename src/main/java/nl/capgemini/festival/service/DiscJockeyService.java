@@ -2,22 +2,29 @@ package nl.capgemini.festival.service;
 
 import nl.capgemini.festival.model.DiscJockey;
 import nl.capgemini.festival.repository.DiscJockeyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class DiscJockeyService {
 
-    @Autowired
-    DiscJockeyRepository discJockeyRepository;
+    public DiscJockeyService(DiscJockeyRepository discJockeyRepository) {
+        this.discJockeyRepository = discJockeyRepository;
+    }
 
-    public List getAllDiscJockeys(){
-        List discJockeys = new ArrayList();
+    private final DiscJockeyRepository discJockeyRepository;
+
+    public ArrayList<DiscJockey>  getAllDiscJockeys(){
+        ArrayList<DiscJockey> discJockeys = new ArrayList<>();
         discJockeyRepository.findAll().forEach(discJockeys::add);
+        return discJockeys;
+    }
+
+    public ArrayList<DiscJockey> getAllDiscJockeysWithNameLength(int length){
+        ArrayList<DiscJockey> discJockeys = new ArrayList<>();
+        discJockeyRepository.findAllByNameLength(length).forEach(discJockeys::add);
         return discJockeys;
     }
 
