@@ -42,8 +42,8 @@ public class DiscJockeyRestControllerTest {
         assertEquals(response.getBody(), discJockeys );
     }
 
-    @Test
-    public void WhenGetDiscJockeyByID_ThenGetDiscJockey(){
+    @Test//WhenDiscJockeyNotFound_ThenReturn404
+    public void WhenDiscJockeyNotFound_ThenReturn404(){
         ResponseEntity<DiscJockey> discJockeyNotFound = ResponseEntity.notFound().build();
         Mockito.when(discJockeyService.getDiscJockey(1L)).thenReturn(discJockeyNotFound.getBody());
         ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(1L);
@@ -52,7 +52,7 @@ public class DiscJockeyRestControllerTest {
     }
 
     @Test
-    public void WhenDiscJockeyNotFound_ThenReturn404(){
+    public void WhenGetDiscJockeyByID_ThenGetDiscJockey(){
         Mockito.when(discJockeyService.getDiscJockey(1L)).thenReturn(discJockey);
         ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(1L);
         Mockito.verify(discJockeyService, times(1)).getDiscJockey(1L);

@@ -39,8 +39,8 @@ public class DiscJockeyService {
     }
 
     public DiscJockey removeDiscJockey(Long id) {
-        DiscJockey discJockey = getDiscJockey(id);
-        discJockeyRepository.delete(discJockey);
-        return discJockey;
+        DiscJockey discJockeyToDelete = getDiscJockey(id);
+        discJockeyRepository.delete(discJockeyToDelete);
+        return discJockeyToDelete;
     }
 }

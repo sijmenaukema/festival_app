@@ -31,11 +31,14 @@ public class MusicSetService {
     }
 
 
-    public void postNewMusicSet(MusicSet musicSet) {
+    public MusicSet postNewMusicSet(MusicSet musicSet) {
         musicSetRepository.save(musicSet);
+        return musicSet;
     }
 
-    public void removeMusicSet(Long id) {
-        musicSetRepository.deleteById(id);
+    public MusicSet removeMusicSet(Long id) {
+        MusicSet musicSetToDelete = getMusicSet(id);
+        musicSetRepository.delete(musicSetToDelete);
+        return musicSetToDelete;
     }
 }
