@@ -6,6 +6,9 @@ create Restcontroller(s) V
 CRUD into JPA H2 V
 many/one many V
 controller => antwoordmodel; V
+testing:
+review application:
+docker:
 
 field list van MusicSets V
     SQL custom query V

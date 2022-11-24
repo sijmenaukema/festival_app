@@ -33,11 +33,14 @@ public class DiscJockeyService {
         return optional.orElse(null);
     }
 
-    public void postNewDiscJockey(DiscJockey discJockey) {
+    public DiscJockey postNewDiscJockey(DiscJockey discJockey) {
         discJockeyRepository.save(discJockey);
+        return discJockey;
     }
 
-    public void removeDiscJockey(Long id) {
-        discJockeyRepository.deleteById(id);
+    public DiscJockey removeDiscJockey(Long id) {
+        DiscJockey discJockey = getDiscJockey(id);
+        discJockeyRepository.delete(discJockey);
+        return discJockey;
     }
 }

@@ -22,19 +22,19 @@ public class DiscJockeyRestController {
     DiscJockeyService discJockeyService;
 
     @GetMapping("/")
-    private ResponseEntity<List<DiscJockey>> getAllDiscJockeys() {
+    protected ResponseEntity<List<DiscJockey>> getAllDiscJockeys() {
         List<DiscJockey> discJockeys  = discJockeyService.getAllDiscJockeys();
         return ResponseEntity.ok().body(discJockeys);
     }
 
     @GetMapping("/namelength")
-    private ResponseEntity<List<DiscJockey>> getAllDiscJockeysWithNameLongerThenSixChar(@RequestBody int length) {
+    protected ResponseEntity<List<DiscJockey>> getAllDiscJockeysWithNameLongerThenGivenChar(@RequestBody int length) {
         List<DiscJockey> discJockeys  = discJockeyService.getAllDiscJockeysWithNameLength(length);
         return ResponseEntity.ok().body(discJockeys);
     }
 
     @GetMapping("/id")
-    private ResponseEntity<DiscJockey> getDiscJockey(@RequestBody @Valid long id) {
+    protected ResponseEntity<DiscJockey> getDiscJockey(@RequestBody @Valid long id) {
         DiscJockey discJockey = discJockeyService.getDiscJockey(id);
         if (discJockey == null) {
             return ResponseEntity.notFound().build();
@@ -44,15 +44,15 @@ public class DiscJockeyRestController {
     }
 
     @PostMapping("/")
-    private ResponseEntity<String> postDiscJockey(@RequestBody @Valid DiscJockey newDiscJockey) {
-        discJockeyService.postNewDiscJockey(newDiscJockey);
-        return ResponseEntity.ok("Disc jockey has been added");
+    protected ResponseEntity<String> postDiscJockey(@RequestBody @Valid DiscJockey newDiscJockey) {
+        DiscJockey discJockey = discJockeyService.postNewDiscJockey(newDiscJockey);
+        return ResponseEntity.ok(String.format("%s Disc jockey has been added", discJockey.toString()));
     }
 
     @DeleteMapping("/id")
-    private ResponseEntity<String> deleteDiscJockey(@RequestBody @Valid long id) {
-        discJockeyService.removeDiscJockey(id);
-        return ResponseEntity.ok("Disc jockey has been removed");
+    protected ResponseEntity<String> deleteDiscJockey(@RequestBody @Valid long id) {
+        DiscJockey discJockey = discJockeyService.removeDiscJockey(id);
+        return ResponseEntity.ok(String.format("%s Disc jockey has been removed", discJockey.toString()));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
