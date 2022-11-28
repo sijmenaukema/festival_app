@@ -2,7 +2,6 @@ package nl.capgemini.festival.controller;
 
 import nl.capgemini.festival.model.MusicSet;
 import nl.capgemini.festival.service.MusicSetService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -14,12 +13,12 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/musicsets")
-public class MusicSetRestController {
+public class MusicSetController {
 
     final
     MusicSetService musicSetService;
 
-    public MusicSetRestController(MusicSetService musicSetService) {
+    public MusicSetController(MusicSetService musicSetService) {
         this.musicSetService = musicSetService;
     }
 

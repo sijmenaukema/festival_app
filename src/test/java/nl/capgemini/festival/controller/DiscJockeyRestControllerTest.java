@@ -22,7 +22,7 @@ public class DiscJockeyRestControllerTest {
     DiscJockeyService discJockeyService;
 
     @InjectMocks
-    DiscJockeyRestController discJockeyRestController;
+    DiscJockeyController discJockeyRestController;
 
     ArrayList<DiscJockey> discJockeys = new ArrayList<>();
     DiscJockey discJockey = new DiscJockey("TESTER", "TESTER");

@@ -2,7 +2,6 @@ package nl.capgemini.festival.controller;
 
 import nl.capgemini.festival.model.DiscJockey;
 import nl.capgemini.festival.model.MusicSet;
-import nl.capgemini.festival.model.MusicSet;
 import nl.capgemini.festival.service.MusicSetService;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,12 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
-import javax.validation.constraints.Null;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -29,7 +23,7 @@ public class MusicSetRestControllerTest {
     MusicSetService musicSetService;
 
     @InjectMocks
-    MusicSetRestController musicSetRestController;
+    MusicSetController musicSetRestController;
 
     ArrayList<MusicSet> musicSets = new ArrayList<>();
     DiscJockey discJockey = new DiscJockey("TESTER", "TESTER");
