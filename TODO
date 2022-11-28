@@ -18,6 +18,13 @@ Controller validation and error handling V
 
 update -> id(not found) invalid ID exception; V
 
+runtime exception:
+    * folder maken voor logische exceptions
+    e.a invalid ID name exception
+    Exception met class name super() Runtime exception
+
+
+
 Part: test maken;
     regressie test vs unit test;
 
