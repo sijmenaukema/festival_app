@@ -15,8 +15,7 @@ import java.util.Map;
 @RequestMapping("/musicsets")
 public class MusicSetController {
 
-    final
-    MusicSetService musicSetService;
+    final MusicSetService musicSetService;
 
     public MusicSetController(MusicSetService musicSetService) {
         this.musicSetService = musicSetService;

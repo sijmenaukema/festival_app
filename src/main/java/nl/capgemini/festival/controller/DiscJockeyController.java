@@ -13,11 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/rest/discjockeys")
+@RequestMapping("/rest/discjockey")
 public class DiscJockeyController {
 
-    final
-    DiscJockeyService discJockeyService;
+    final DiscJockeyService discJockeyService;
 
     public DiscJockeyController(DiscJockeyService discJockeyService) {
         this.discJockeyService = discJockeyService;
