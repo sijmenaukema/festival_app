@@ -1,12 +1,12 @@
 package nl.capgemini.festival.service;
 
-import nl.capgemini.festival.model.MusicSet;
-import nl.capgemini.festival.repository.MusicSetRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
+import nl.capgemini.festival.model.MusicSet;
+import nl.capgemini.festival.repository.MusicSetRepository;
 @Service
 public class MusicSetService {
 

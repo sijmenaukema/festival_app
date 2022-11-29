@@ -1,12 +1,12 @@
 package nl.capgemini.festival.service;
 
-import nl.capgemini.festival.model.DiscJockey;
-import nl.capgemini.festival.repository.DiscJockeyRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
+import nl.capgemini.festival.model.DiscJockey;
+import nl.capgemini.festival.repository.DiscJockeyRepository;
 @Service
 public class DiscJockeyService {
 
