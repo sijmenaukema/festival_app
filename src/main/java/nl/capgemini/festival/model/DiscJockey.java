@@ -13,9 +13,9 @@ public class DiscJockey {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
     @NotNull(message = "Name is mandatory")
     @NotEmpty(message = "Name is mandatory")
+    @Column
     private String name;
 
     @Column

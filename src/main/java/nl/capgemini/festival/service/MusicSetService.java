@@ -23,9 +23,12 @@ public class MusicSetService {
     }
     public MusicSet getMusicSet(Long id) {
         Optional<MusicSet> optional = musicSetRepository.findById(id);
-        return optional.orElse(null);
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            return null;
+        }
     }
-
 
     public MusicSet postNewMusicSet(MusicSet musicSet) {
         musicSetRepository.save(musicSet);

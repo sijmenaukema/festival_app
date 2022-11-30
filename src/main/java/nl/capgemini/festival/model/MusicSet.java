@@ -32,7 +32,8 @@ public class MusicSet {
 
     public Long getId() { return id; }
     public String getTitle() { return title; }
-    public DiscJockey getDiscJockey() {return discJockey; }
     public String getGenre() {return genre; }
-    public void setTitle(String title) {this.title = title;}
+    public void setTitle(String title) { this.title = title; }
+    public void setGenre(String genre) { this.genre = genre; }
+    public DiscJockey getDiscJockey(){ return discJockey; }
 }

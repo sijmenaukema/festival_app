@@ -23,11 +23,17 @@ runtime exception:
     e.a invalid ID name exception
     Exception met class name super() Runtime exception
 
-
-
 Part: test maken;
     regressie test vs unit test;
 
 project hosten via een localhost container
 
 front end;
+
+DTO: class aanmaken met ID
+* Docker voor festival_app
+
+* JAR lokaal builden ;
+* image in container doen ;
+* container spinnen ;
+* Postgres;

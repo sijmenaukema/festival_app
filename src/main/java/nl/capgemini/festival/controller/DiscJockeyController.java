@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/rest/discjockey")
+@RequestMapping("/discjockey")
 public class DiscJockeyController {
 
     final DiscJockeyService discJockeyService;
@@ -29,13 +29,15 @@ public class DiscJockeyController {
     }
 
     @GetMapping("/namelength")
-    protected ResponseEntity<List<DiscJockey>> getAllDiscJockeysWithNameLongerThenGivenChar(@RequestBody int length) {
+    protected ResponseEntity<List<DiscJockey>> getAllDiscJockeysWithNameLongerThenGivenChar(@RequestBody Map<String,Object> body) {
+        int length = Integer.parseInt(body.get("length").toString());
         List<DiscJockey> discJockeys  = discJockeyService.getAllDiscJockeysWithNameLength(length);
         return ResponseEntity.ok().body(discJockeys);
     }
 
     @GetMapping("/id")
-    protected ResponseEntity<DiscJockey> getDiscJockey(@RequestBody @Valid long id) {
+    protected ResponseEntity<DiscJockey> getDiscJockey(@RequestBody @Valid Map<String,Object> body) {
+        long id =  Long.parseLong(body.get("id").toString());
         DiscJockey discJockey = discJockeyService.getDiscJockey(id);
         if (discJockey == null) {
             return ResponseEntity.notFound().build();
@@ -45,13 +47,19 @@ public class DiscJockeyController {
     }
 
     @PostMapping("/")
-    protected ResponseEntity<String> postDiscJockey(@RequestBody @Valid DiscJockey newDiscJockey) {
-        DiscJockey discJockey = discJockeyService.postNewDiscJockey(newDiscJockey);
-        return ResponseEntity.ok(String.format("%s Disc jockey has been added", discJockey.toString()));
+    protected ResponseEntity<String> postDiscJockey(@RequestBody @Valid Map<String,Object> body) {
+        DiscJockey newDiscJockey = new DiscJockey(body.get("name").toString(), body.get("genre").toString());
+        DiscJockey createdDiscJockey = discJockeyService.postNewDiscJockey(newDiscJockey);
+        if (createdDiscJockey != null) {
+            return ResponseEntity.ok(String.format("%s Disc jockey has been added", createdDiscJockey));
+        }else{
+            return ResponseEntity.internalServerError().body("something went wrong");
+        }
     }
 
     @DeleteMapping("/id")
-    protected ResponseEntity<String> deleteDiscJockey(@RequestBody @Valid long id) {
+    protected ResponseEntity<String> deleteDiscJockey(@RequestBody @Valid Map<String,Object> body) {
+        long id =  Long.parseLong(body.get("id").toString());
         DiscJockey discJockey = discJockeyService.removeDiscJockey(id);
         return ResponseEntity.ok(String.format("%s Disc jockey has been removed", discJockey.toString()));
     }

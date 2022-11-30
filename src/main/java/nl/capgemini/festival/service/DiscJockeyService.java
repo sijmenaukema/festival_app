@@ -33,6 +33,11 @@ public class DiscJockeyService {
         return optional.orElse(null);
     }
 
+    public DiscJockey getDiscJockey(String name) {
+        Optional<DiscJockey> optional = discJockeyRepository.findByName(name);
+        return optional.orElse(null);
+    }
+
     public DiscJockey postNewDiscJockey(DiscJockey discJockey) {
         discJockeyRepository.save(discJockey);
         return discJockey;

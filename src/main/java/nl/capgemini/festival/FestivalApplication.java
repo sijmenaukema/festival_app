@@ -25,10 +25,10 @@ public class FestivalApplication {
 	@Bean
 	InitializingBean sendDatabase() {
 		return () -> {
-			discJockeyRepository.save(new DiscJockey("Piet", "Mondharmonika"));
+			discJockeyRepository.save(new DiscJockey("Martijn", "Mondharmonika"));
 			discJockeyRepository.save(new DiscJockey("Kees", "Ukelele"));
 			discJockeyRepository.save(new DiscJockey("Jan", "Doedelzak"));
-			musicSetRepository.save(new MusicSet("Herrie", new DiscJockey("Kees", "Ukelele"), "Ukelele"));
+			musicSetRepository.save(new MusicSet("Herrie", new DiscJockey("Jan", "Doedelzak"), "Ukelele"));
 			musicSetRepository.save(new MusicSet("Klaagzang", new DiscJockey("Jan", "Doedelzak"), "Mondharmonika"));
 		};
 	}
