@@ -29,7 +29,10 @@ public class MusicSetService {
             return null;
         }
     }
-
+//    public ArrayList<MusicSet> getMusicSetByDiscJockeyId(long id){
+//        ArrayList<MusicSet> musicSets = new ArrayList<>();
+//
+//    }
     public MusicSet postNewMusicSet(MusicSet musicSet) {
         musicSetRepository.save(musicSet);
         return musicSet;

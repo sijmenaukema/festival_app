@@ -21,23 +21,18 @@ public class DiscJockey {
     @Column
     private String genre;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST, mappedBy = "discJockey")
     private Set<MusicSet> musicSet;
 
     public DiscJockey(){}
 
-    public DiscJockey(String name, String genre){
+    public DiscJockey(String name){
         this.name = name;
-        this.genre = genre;
     }
 
     public Long getId() {return id; }
     public String getName() { return name; }
-    public String getGenre() {return genre; }
     public void setName(String name) {
         this.name = name;
-    }
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 }

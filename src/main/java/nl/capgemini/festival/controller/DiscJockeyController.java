@@ -48,7 +48,7 @@ public class DiscJockeyController {
 
     @PostMapping("/")
     protected ResponseEntity<String> postDiscJockey(@RequestBody @Valid Map<String,Object> body) {
-        DiscJockey newDiscJockey = new DiscJockey(body.get("name").toString(), body.get("genre").toString());
+        DiscJockey newDiscJockey = new DiscJockey(body.get("name").toString());
         DiscJockey createdDiscJockey = discJockeyService.postNewDiscJockey(newDiscJockey);
         if (createdDiscJockey != null) {
             return ResponseEntity.ok(String.format("%s Disc jockey has been added", createdDiscJockey));

@@ -1,20 +1,23 @@
 package nl.capgemini.festival.service;
 
+import nl.capgemini.festival.model.DiscJockey;
+import nl.capgemini.festival.repository.DiscJockeyRepository;
+import nl.capgemini.festival.repository.MusicSetRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Optional;
-
-import nl.capgemini.festival.model.DiscJockey;
-import nl.capgemini.festival.repository.DiscJockeyRepository;
 @Service
 public class DiscJockeyService {
 
-    public DiscJockeyService(DiscJockeyRepository discJockeyRepository) {
+    public DiscJockeyService(DiscJockeyRepository discJockeyRepository, MusicSetRepository musicSetRepository) {
         this.discJockeyRepository = discJockeyRepository;
+        this.musicSetRepository = musicSetRepository;
     }
 
     private final DiscJockeyRepository discJockeyRepository;
+
+    private final MusicSetRepository musicSetRepository;
 
     public ArrayList<DiscJockey>  getAllDiscJockeys(){
         ArrayList<DiscJockey> discJockeys = new ArrayList<>();
