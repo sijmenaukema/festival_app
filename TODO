@@ -31,9 +31,12 @@ project hosten via een localhost container
 front end;
 
 DTO: class aanmaken met ID
-* Docker voor festival_app
+* Docker voor festival_app V
 
-* JAR lokaal builden ;
-* image in container doen ;
-* container spinnen ;
+* JAR lokaal builden ; V
+* image in container doen ; V
+* container spinnen ; V
 * Postgres;
+* mongo local mount; command!?
+* Docker compose ++
+* Docker network;

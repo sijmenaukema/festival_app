@@ -10,10 +10,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.ResponseEntity;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.times;
 
 public class DiscJockeyRestControllerTest {
@@ -40,7 +41,7 @@ public class DiscJockeyRestControllerTest {
     };
 
     @Test
-    public void WhenGetDiscJockey_ThenGetDiscJockeys(){
+    public void WhenGetDiscJockey_ThenGetDiscJockeys() {
         Mockito.when(discJockeyService.getAllDiscJockeys()).thenReturn(discJockeys);
         ResponseEntity<List<DiscJockey>> response = discJockeyRestController.getAllDiscJockeys();
         Mockito.verify(discJockeyService, times(1)).getAllDiscJockeys();

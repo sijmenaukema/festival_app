@@ -24,9 +24,6 @@ public class DiscJockey {
     @OneToMany
     private Set<MusicSet> musicSet;
 
-    @Column
-    private int review;
-
     public DiscJockey(){}
 
     public DiscJockey(String name, String genre){

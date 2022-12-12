@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 @RequestMapping("/discjockey")
 public class DiscJockeyController {
 
@@ -35,10 +36,9 @@ public class DiscJockeyController {
         return ResponseEntity.ok().body(discJockeys);
     }
 
-    @GetMapping("/id")
-    protected ResponseEntity<DiscJockey> getDiscJockey(@RequestBody @Valid Map<String,Object> body) {
-        long id =  Long.parseLong(body.get("id").toString());
-        DiscJockey discJockey = discJockeyService.getDiscJockey(id);
+    @GetMapping("/{id}")
+    protected ResponseEntity<DiscJockey> getDiscJockey(@PathVariable @Valid String id) {
+        DiscJockey discJockey = discJockeyService.getDiscJockey(Long.parseLong(id));
         if (discJockey == null) {
             return ResponseEntity.notFound().build();
         }else{
@@ -57,10 +57,9 @@ public class DiscJockeyController {
         }
     }
 
-    @DeleteMapping("/id")
-    protected ResponseEntity<String> deleteDiscJockey(@RequestBody @Valid Map<String,Object> body) {
-        long id =  Long.parseLong(body.get("id").toString());
-        DiscJockey discJockey = discJockeyService.removeDiscJockey(id);
+    @DeleteMapping("/{id}")
+    protected ResponseEntity<String> deleteDiscJockey(@PathVariable @Valid String id) {
+        DiscJockey discJockey = discJockeyService.removeDiscJockey(Long.parseLong(id));
         return ResponseEntity.ok(String.format("%s Disc jockey has been removed", discJockey.toString()));
     }
 

@@ -16,6 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/musicset")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class MusicSetController {
 
     final MusicSetService musicSetService;
@@ -33,10 +34,9 @@ public class MusicSetController {
         return ResponseEntity.ok(musicSets);
     }
 
-    @PostMapping("/id")
-    protected ResponseEntity<MusicSet> getMusicSet(@RequestBody Map<String, Object> body) {
-        long id = Long.parseLong(body.get("id").toString());
-        MusicSet musicSet = musicSetService.getMusicSet(id);
+    @GetMapping("/{id}")
+    protected ResponseEntity<MusicSet> getMusicSet(@PathVariable String id) {
+        MusicSet musicSet = musicSetService.getMusicSet(Long.parseLong(id));
         if (musicSet == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -55,10 +55,9 @@ public class MusicSetController {
         }
     }
 
-    @DeleteMapping("/id")
-    protected ResponseEntity<String> deleteMusicSet(@RequestBody @Valid Map<String, Object> body) {
-        long id = Long.parseLong(body.get("id").toString());
-        MusicSet musicSet = musicSetService.removeMusicSet(id);
+    @DeleteMapping("/{id}")
+    protected ResponseEntity<String> deleteMusicSet(@PathVariable @Valid String id) {
+        MusicSet musicSet = musicSetService.removeMusicSet(Long.parseLong(id));
         return ResponseEntity.ok(String.format("%s Music set has been removed", musicSet.toString()));
     }
 
