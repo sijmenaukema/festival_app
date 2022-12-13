@@ -46,13 +46,19 @@ public class MusicSetController {
 
     @PostMapping("/")
     protected ResponseEntity<String> postMusicSet(@RequestBody @Valid Map<String, Object> body) {
-        DiscJockey discJockey = discJockeyService.getDiscJockey(body.get("discjockeyname").toString());
+        DiscJockey discJockey = discJockeyService.getDiscJockey(Long.parseLong(body.get("id").toString()));
         MusicSet musicSet = musicSetService.postNewMusicSet(new MusicSet(body.get("title").toString(), discJockey, body.get("genre").toString()));
         if (musicSet == null) {
             return ResponseEntity.notFound().build();
         } else {
             return ResponseEntity.ok(String.format("%s Music set has been added", musicSet));
         }
+    }
+
+    @GetMapping("/discjockeyid/{id}")
+    protected ResponseEntity<MusicSet[]> getMusicSetsByDiscJockeyId(@PathVariable @Valid String id) {
+        MusicSet[] musicSet = musicSetService.getMusicSetByDiscJockeyId(Long.parseLong(id));
+        return ResponseEntity.ok().body(musicSet);
     }
 
     @DeleteMapping("/{id}")

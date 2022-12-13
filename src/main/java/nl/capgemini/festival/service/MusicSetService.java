@@ -1,8 +1,11 @@
 package nl.capgemini.festival.service;
 
+import nl.capgemini.festival.model.DiscJockey;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import nl.capgemini.festival.model.MusicSet;
@@ -29,10 +32,16 @@ public class MusicSetService {
             return null;
         }
     }
-//    public ArrayList<MusicSet> getMusicSetByDiscJockeyId(long id){
-//        ArrayList<MusicSet> musicSets = new ArrayList<>();
-//
-//    }
+    public MusicSet[] getMusicSetByDiscJockeyId(long id){
+        Optional<MusicSet[]> optional = musicSetRepository.findByDiscJockeyId(id);
+        MusicSet[] musicSets;
+        if (optional.isPresent()){
+            musicSets = optional.get();
+            return musicSets;
+        }else{
+            return null;
+        }
+    }
     public MusicSet postNewMusicSet(MusicSet musicSet) {
         musicSetRepository.save(musicSet);
         return musicSet;
