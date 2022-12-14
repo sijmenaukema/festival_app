@@ -19,7 +19,7 @@ public class MusicSet {
     private String genre;
 
     @NotNull
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="disc_jockey_id")
     DiscJockey discJockey;
 
