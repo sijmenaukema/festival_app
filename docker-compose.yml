@@ -1,25 +1,46 @@
-version: '2'
 services:
-  message-server:
-    container_name: festival-service
-    build:
-      context: docker-festival-service
-      dockerfile: Dockerfile
-    image: festival-service:latest
+  festival-app:
+    container_name: festival-app
+    image: festival-app:latest
+    build: ./
+    depends_on:
+      - postgres-db
     ports:
-      - 9090:9090
+      - '9090:9090'
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     networks:
       - festival-network
-  product-server:
-    container_name: product-server
-    build:
-      context: docker-product-server
-      dockerfile: Dockerfile
-    image: product-server:latest
+
+  postgres-db:
+    image: postgres:9.6
+    container_name: postgres-db
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
     ports:
-      - 19999:9999
+      - 5432:5432
+    volumes_from:
+      - postgres-db-data
     networks:
-      - spring-cloud-network
+      - festival-network
+    hostname: postgres
+    env_file:
+      - .env
+
+  postgres-db-data:
+    image: cogniteev/echo
+    command: echo 'Data Container for PostgreSQL'
+    volumes:
+      - /Users/sijmen/Java/festival_app/data
+
+
 networks:
-  spring-cloud-network:
-    driver: bridge
+  festival-network: {}
+
+volumes:
+  postgres-db-data: {}

@@ -29,8 +29,10 @@ public class MusicSetRestControllerTest {
     MusicSetController musicSetController;
 
     ArrayList<MusicSet> musicSets = new ArrayList<>();
-    DiscJockey discJockey = new DiscJockey("TESTER", "TESTER");
+    DiscJockey discJockey = new DiscJockey("TESTER");
     MusicSet musicSet = new MusicSet("TESTER", discJockey, "TESTER");
+
+    final String id = "1";
 
     HashMap<String,Object> body = new HashMap<>();
     @Before
@@ -41,7 +43,6 @@ public class MusicSetRestControllerTest {
         body.put("id", "1");
         body.put("discjockeyname", "TESTER");
         body.put("title", "TESTER");
-        body.put("genre", "TESTER");
     };
 
     @Test
@@ -56,7 +57,7 @@ public class MusicSetRestControllerTest {
     public void WhenMusicSetNotFound_ThenReturn404(){
         ResponseEntity<MusicSet> musicSetNotFound = ResponseEntity.notFound().build();
         Mockito.when(musicSetService.getMusicSet(1L)).thenReturn(musicSetNotFound.getBody());
-        ResponseEntity<MusicSet> response = musicSetController.getMusicSet(body);
+        ResponseEntity<MusicSet> response = musicSetController.getMusicSet(id);
         Mockito.verify(musicSetService, times(1)).getMusicSet(1L);
         assertEquals(response.getBody(), musicSetNotFound.getBody() );
     }
@@ -64,7 +65,7 @@ public class MusicSetRestControllerTest {
     @Test
     public void WhenGetMusicSetByID_ThenGetMusicSet(){
         Mockito.when(musicSetService.getMusicSet(1L)).thenReturn(musicSet);
-        ResponseEntity<MusicSet> response = musicSetController.getMusicSet(body);
+        ResponseEntity<MusicSet> response = musicSetController.getMusicSet(id);
         Mockito.verify(musicSetService, times(1)).getMusicSet(1L);
         assertEquals(response.getBody(), musicSet);
     }
@@ -72,7 +73,7 @@ public class MusicSetRestControllerTest {
     @Test
     public void WhenDeleteMusicSet_ThenRemoveMusicSet(){
         Mockito.when(musicSetService.removeMusicSet(1L)).thenReturn(musicSet);
-        ResponseEntity<String> response = musicSetController.deleteMusicSet(body);
+        ResponseEntity<String> response = musicSetController.deleteMusicSet(id);
         Mockito.verify(musicSetService, times(1)).removeMusicSet(1L);
         assertEquals(response.getBody(), String.format("%s Music set has been removed", musicSet.toString()));
     }

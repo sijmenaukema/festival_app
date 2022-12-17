@@ -26,8 +26,8 @@ public class DiscJockeyRestControllerTest {
     DiscJockeyController discJockeyRestController;
 
     ArrayList<DiscJockey> discJockeys = new ArrayList<>();
-    DiscJockey discJockey = new DiscJockey("TESTER", "TESTER");
-
+    DiscJockey discJockey = new DiscJockey("TESTER");
+    final String id = "1";
     HashMap<String,Object> body = new HashMap<>();
 
     @Before
@@ -37,7 +37,7 @@ public class DiscJockeyRestControllerTest {
         discJockeys.add(discJockey);
         body.put("id", "1");
         body.put("name", "TESTER");
-        body.put("genre", "TESTER");
+
     };
 
     @Test
@@ -52,7 +52,7 @@ public class DiscJockeyRestControllerTest {
     public void WhenDiscJockeyNotFound_ThenReturn404(){
         ResponseEntity<DiscJockey> discJockeyNotFound = ResponseEntity.notFound().build();
         Mockito.when(discJockeyService.getDiscJockey(1L)).thenReturn(discJockeyNotFound.getBody());
-        ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(body);
+        ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(id);
         Mockito.verify(discJockeyService, times(1)).getDiscJockey(1L);
         assertEquals(response.getBody(), discJockeyNotFound.getBody() );
     }
@@ -60,7 +60,7 @@ public class DiscJockeyRestControllerTest {
     @Test
     public void WhenGetDiscJockeyByID_ThenGetDiscJockey(){
         Mockito.when(discJockeyService.getDiscJockey(1L)).thenReturn(discJockey);
-        ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(body);
+        ResponseEntity<DiscJockey> response = discJockeyRestController.getDiscJockey(id);
         Mockito.verify(discJockeyService, times(1)).getDiscJockey(1L);
         assertEquals(response.getBody(), discJockey );
     }
@@ -68,7 +68,7 @@ public class DiscJockeyRestControllerTest {
     @Test
     public void WhenDeleteDiscJockey_ThenRemoveDiscJockey(){
         Mockito.when(discJockeyService.removeDiscJockey(1L)).thenReturn(discJockey);
-        ResponseEntity<String> response = discJockeyRestController.deleteDiscJockey(body);
+        ResponseEntity<String> response = discJockeyRestController.deleteDiscJockey(id);
         Mockito.verify(discJockeyService, times(1)).removeDiscJockey(1L);
         assertEquals(response.getBody(), String.format("%s Disc jockey has been removed", discJockey.toString()));
     }
