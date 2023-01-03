@@ -1,6 +1,5 @@
 package nl.capgemini.festival.repository;
 
-import nl.capgemini.festival.model.DiscJockey;
 import nl.capgemini.festival.model.MusicSet;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

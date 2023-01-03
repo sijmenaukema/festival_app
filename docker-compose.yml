@@ -24,19 +24,13 @@ services:
       - POSTGRES_PASSWORD=password
     ports:
       - 5432:5432
-    volumes_from:
-      - postgres-db-data
+    volumes:
+      - ./data:/Users/sijmen/Java/festival_app/data
     networks:
       - festival-network
     hostname: postgres
     env_file:
       - .env
-
-  postgres-db-data:
-    image: cogniteev/echo
-    command: echo 'Data Container for PostgreSQL'
-    volumes:
-      - /Users/sijmen/Java/festival_app/data
 
   mongodb:
     container_name: mongodb
@@ -48,6 +42,8 @@ services:
     networks:
       - festival-network
     hostname: mongo
+    depends_on:
+      - festival-app
 
   review-app:
     container_name: review-app
@@ -66,6 +62,3 @@ services:
 networks:
   festival-network:
     driver: bridge
-
-volumes:
-  postgres-db-data: {}
